@@ -5,5 +5,12 @@
  * @returns {string} - the new string without extra symbols according passed size
  */
 export function trimSymbols(string, size) {
-
+  if (typeof (size) !== "number") {return string;}
+  let counter;
+  let prevChar;
+  return string.split('').reduce((acc, char) => {
+    const compareChar = char === prevChar ? counter++ : counter = 1;
+    prevChar = char;
+    return counter <= size ? acc + char : acc;
+  }, '');
 }
